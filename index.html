@@ -1,2 +1,264 @@
 <!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>OFCast Hub</title><style>body{font-family:system-ui;margin:0;background:#f5f5f3;color:#111315}.wrap{max-width:1100px;margin:auto;padding:40px 24px}h1{margin-bottom:8px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px}.card{min-height:250px;border-radius:20px;padding:28px;display:flex;flex-direction:column;justify-content:space-between}.live{background:#111315;color:#fff}.staging{background:#fff;border:1px solid #ddd}.admin{background:#d71920;color:#fff}.btn{padding:14px 16px;border-radius:10px;font-weight:700;background:#111315;color:#fff}.live .btn{background:#d71920}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style></head><body><div class="wrap"><h1>OFCast Hub</h1><p>Umgebung auswählen</p><div class="grid"><div class="card live"><div><b>LIVE</b><h2>Live Umgebung</h2><p>Aktuelle produktive OFCast App.</p></div><div class="btn">Live öffnen</div></div><div class="card staging"><div><b>STAGING</b><h2>Staging</h2><p>Neue Features sicher testen.</p></div><div class="btn">Staging öffnen</div></div><div class="card admin"><div><b>ADMIN</b><h2>Admin Panel</h2><p>Nutzer, Premium, Matchday & Statistiken.</p></div><div class="btn">Admin öffnen</div></div></div></div></body></html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#d71920" />
+
+  <title>OFCast Hub</title>
+  <meta
+    name="description"
+    content="Zentraler Einstieg in die OFCast Live-, Staging- und Admin-Umgebung."
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family:
+        Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: #f4f4f2;
+      color: #111315;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 42px 28px 20px;
+    }
+
+    .brand {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      color: #6b6f73;
+      font-size: 16px;
+    }
+
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 35px 28px 60px;
+    }
+
+    .grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      min-height: 320px;
+      padding: 30px;
+      border-radius: 22px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .card.live {
+      background: #111315;
+      color: white;
+    }
+
+    .card.staging {
+      background: white;
+      color: #111315;
+      border: 1px solid #dededb;
+    }
+
+    .card.admin {
+      background: #d71920;
+      color: white;
+    }
+
+    .badge {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .live .badge {
+      background: #d71920;
+      color: white;
+    }
+
+    .staging .badge {
+      background: #ededeb;
+      color: #111315;
+    }
+
+    .admin .badge {
+      background: #111315;
+      color: white;
+    }
+
+    h2 {
+      margin: 26px 0 8px;
+      font-size: 28px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .description {
+      margin: 0;
+      line-height: 1.5;
+      font-size: 15px;
+      opacity: 0.78;
+    }
+
+    .button {
+      margin-top: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 18px;
+      border-radius: 11px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .live .button {
+      background: #d71920;
+      color: white;
+    }
+
+    .staging .button {
+      background: #111315;
+      color: white;
+    }
+
+    .admin .button {
+      background: #111315;
+      color: white;
+    }
+
+    .footer {
+      text-align: center;
+      color: #777b7e;
+      font-size: 13px;
+      padding: 20px 20px 30px;
+    }
+
+    @media (max-width: 800px) {
+      .header {
+        padding-top: 28px;
+      }
+
+      .main {
+        align-items: flex-start;
+        padding-top: 25px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        min-height: 250px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <header class="header">
+      <h1 class="brand">OFCast Hub</h1>
+      <p class="subtitle">Wähle deine Umgebung</p>
+    </header>
+
+    <main class="main">
+      <div class="grid">
+
+        <a
+          class="card live"
+          href="https://ofcast.lovable.app"
+        >
+          <div>
+            <span class="badge">LIVE</span>
+            <h2>Live Umgebung</h2>
+            <p class="description">
+              Aktuelle produktive OFCast App.
+            </p>
+          </div>
+
+          <div class="button">Live öffnen</div>
+        </a>
+
+        <a
+          class="card staging"
+          href="https://id-preview--65cf8d63-7f08-4965-991b-8cdc592aa9f8.lovable.app"
+        >
+          <div>
+            <span class="badge">STAGING</span>
+            <h2>Staging</h2>
+            <p class="description">
+              Neue Features sicher testen, bevor sie live gehen.
+            </p>
+          </div>
+
+          <div class="button">Staging öffnen</div>
+        </a>
+
+        <a
+          class="card admin"
+          href="https://id-preview--65cf8d63-7f08-4965-991b-8cdc592aa9f8.lovable.app/admin"
+        >
+          <div>
+            <span class="badge">ADMIN</span>
+            <h2>Admin Panel</h2>
+            <p class="description">
+              Nutzer, Premium, Matchday, Statistiken und Administration.
+            </p>
+          </div>
+
+          <div class="button">Admin öffnen</div>
+        </a>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      OFCast · Environment Hub
+    </footer>
+
+  </div>
+</body>
+</html>
